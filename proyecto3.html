@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar</title>
+</head>
+<body>
+    <div class="search-bar">
+        <img src="l.jpg" alt="Logo"> 
+        <input type="text" id="searchInput" placeholder="......">
+        <button id="searchButton">Buscar</button>
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            performSearch();
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                window.open(url, '_blank'); // Abre la búsqueda en una nueva pestaña
+            }
+        }
+    </script>
+     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 24px;
+            padding: 10px;
+            width: 600px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .search-bar img {
+            width: 40px; /* Tamaño del logo */
+            height: 40px; /* Tamaño del logo */
+            margin-right: 10px; /* Espacio a la derecha */
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            background-color: #3d3a3d;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-bar button:hover {
+            background-color: #e651c0;
+        }
+    </style>
+</body>
+</html>
